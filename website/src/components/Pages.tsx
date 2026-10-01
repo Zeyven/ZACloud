@@ -1,5 +1,6 @@
 import {
   contactEmail,
+  legalOperator,
   copy,
   localPath,
   products,
@@ -272,9 +273,16 @@ export function InnerPage({
       <p>
         {copy(
           locale,
-          "This is a development preview of the ZAITHE website. The legal operator and production policies have not yet been confirmed. This notice is limited to the behavior of this build.",
-          "这是 ZAITHE 网站的开发预览。法律主体与正式政策尚待确认。本说明仅描述当前构建的实际行为。",
+          "This is a development preview of the ZAITHE website. Production policies have not yet been finalized. This notice is limited to the behavior of this build.",
+          "这是 ZAITHE 网站的开发预览。正式政策尚待完善。本说明仅描述当前构建的实际行为。",
         )}
+      </p>
+      <p>
+        {copy(locale, "Website operator: ", "网站运营主体：")}
+        {legalOperator}
+        <br />
+        {copy(locale, "Contact: ", "联系邮箱：")}
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
       </p>
       {privacy ? (
         <>
@@ -311,8 +319,8 @@ export function InnerPage({
           <p>
             {copy(
               locale,
-              "Formal service terms, intellectual property notices and the legal entity must be confirmed before public release.",
-              "正式服务条款、知识产权声明与法律主体须在公开发布前确认。",
+              "Formal service terms and intellectual property notices must be finalized before public release.",
+              "正式服务条款与知识产权声明须在公开发布前完善。",
             )}
           </p>
         </>

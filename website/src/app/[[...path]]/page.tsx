@@ -1,6 +1,6 @@
 import { inter, noto } from "@/lib/fonts";
 import { notFound } from "next/navigation";
-import { routes, parsePath } from "@/lib/site";
+import { routes, parsePath, legalOperator, contactEmail } from "@/lib/site";
 import { pageMetadata } from "@/lib/metadata";
 import { Header, Footer } from "@/components/Shell";
 import { Home } from "@/components/Home";
@@ -42,6 +42,8 @@ export default async function Page({ params }: Props) {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "ZAITHE",
+              legalName: legalOperator,
+              email: contactEmail,
               alternateName: "智行通心",
               url: "https://zaithe.com",
               logo: "https://zaithe.com/brand/zaithe-app-obsidian.svg",

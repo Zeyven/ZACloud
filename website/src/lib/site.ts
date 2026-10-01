@@ -1,4 +1,5 @@
 import { passage } from "./passage";
+export const legalOperator = "智行通心（湖北）科技有限公司";
 export const contactEmail = "zaithe@zaithe.com";
 export type Locale = "en" | "zh-cn";
 export const siteFeatures = {
