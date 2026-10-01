@@ -1,0 +1,44 @@
+:root {
+  --za-obsidian: #050506;
+  --za-graphite: #101113;
+  --za-carbon: #1b1d20;
+  --za-silver: #c6c8ca;
+  --za-pearl-text: #ededea;
+  --za-pearl-bg: #f4f3ef;
+  --za-warm-white: #f8f7f3;
+  --za-ink: #101112;
+  --za-warm-pearl: #e9e2d6;
+  --za-motion-micro: 160ms;
+  --za-motion-ui: 280ms;
+  --za-motion-reveal: 560ms;
+  --za-motion-passage: 900ms;
+  --za-motion-cinematic: 1600ms;
+  --za-motion-monument: 3200ms;
+  --shell: 1760px;
+  --gutter: clamp(24px, 4.8vw, 88px);
+  --columns: 12;
+  --gap: 24px;
+  --font-sans:
+    var(--font-inter), var(--font-noto), "Source Han Sans SC", "PingFang SC",
+    "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+}
+@media (min-width: 1728px) {
+  :root {
+    --columns: 16;
+    --gap: 32px;
+  }
+}
+@media (max-width: 1023px) {
+  :root {
+    --columns: 8;
+    --gap: 16px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --columns: 4;
+    --gap: 16px;
+    --gutter: 24px;
+  }
+}

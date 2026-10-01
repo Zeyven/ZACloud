@@ -1,0 +1,54 @@
+{
+  "browser": "151.0.7922.173",
+  "samples": 35,
+  "p95SubmissionMs": 0.10000000055879354,
+  "desktop": {
+    "tier": "high",
+    "running": false,
+    "frames": 64,
+    "frameMs": 0,
+    "drawCalls": 3,
+    "triangles": 36,
+    "geometries": 1,
+    "textures": 0,
+    "programs": 1,
+    "dpr": 1,
+    "progress": 0.17498616666666666
+  },
+  "cpu4x": {
+    "tier": "high",
+    "running": true,
+    "frames": 87,
+    "frameMs": 0.10000000055879354,
+    "drawCalls": 3,
+    "triangles": 36,
+    "geometries": 1,
+    "textures": 0,
+    "programs": 1,
+    "dpr": 1,
+    "progress": 0.23610283333333332
+  },
+  "mobile": {
+    "tier": "medium",
+    "running": false,
+    "frames": 9,
+    "frameMs": 0,
+    "drawCalls": 3,
+    "triangles": 36,
+    "geometries": 1,
+    "textures": 0,
+    "programs": 1,
+    "dpr": 1,
+    "progress": 0.029166666666666667
+  },
+  "mobileOverflow": false,
+  "lazyJs": [
+    "/_next/static/chunks/0m_p4olwufc7q.js"
+  ],
+  "pageErrors": [],
+  "notes": [
+    "Cloud Chromium; WebGL may use software rendering.",
+    "CPU submission timing, not GPU elapsed time or production RUM.",
+    "No native Safari/iOS or physical thermal/battery certification."
+  ]
+}

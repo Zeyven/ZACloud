@@ -1,0 +1,36 @@
+name: Website checks
+on:
+  push:
+    branches: ["zaithe/website-v5"]
+    paths: ['website/**', '.github/workflows/website-ci.yml']
+  pull_request:
+    paths: ['website/**', '.github/workflows/website-ci.yml']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: website/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm media-policy && pnpm lint && pnpm typecheck && pnpm test && pnpm build
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: website-browser-evidence
+          path: |
+            website/artifacts
+            website/playwright-report

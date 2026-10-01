@@ -1,0 +1,21 @@
+# Scene decisions
+
+All essential meaning is DOM. Every visual has a static baseline. Studio alone has an optional, user-started Canvas render loop. Reduced motion, Save-Data or unavailable Canvas keep the static CSS composition; background and offscreen states pause rendering. No WebGL or media is used.
+
+| Scene         | Message                               | Visual thesis                                           | Primary / secondary | Interaction                  | Fallback and budget                                        |
+| ------------- | ------------------------------------- | ------------------------------------------------------- | ------------------- | ---------------------------- | ---------------------------------------------------------- |
+| Hero          | ZAITHE is an AI company               | Monumental wordmark typography in black                 | DOM / CSS           | Native navigation and scroll | Static SSR, no film, no loader                             |
+| Identity      | Intelligence is the starting point    | Quiet typography and an understanding-to-action axis    | DOM / CSS           | Read                         | No JS                                                      |
+| Manifesto     | Intelligence opens possibility        | Large Chinese characters in a softly lit paper field    | DOM / CSS           | Read                         | CSS radial light, no asset                                 |
+| Passage Monument | Understanding connects to action      | Measured diagonal depth, light and 通                            | CSS / DOM           | Read                         | Inline SVG still under no JS / low / safe; optional WebGL2 only on request |
+| Pillars       | Build, Create, Discover               | Three editorial rows with independent scale             | DOM / CSS           | Navigate to real content     | No equal card grid                                         |
+| AYRA          | Intent needs visible steps and review | Actual accessible interface, labeled deterministic demo | DOM / CSS           | Advance four example steps   | Initial content is server-rendered; no model call          |
+| Nexus         | Context connects knowledge            | Source-to-question topology                             | SVG / DOM           | Product link                 | Six nodes, no frame loop                                   |
+| Space         | Ideas become composition              | Layered rectangular forms                               | CSS / DOM           | Product link                 | Thirteen elements, no external artwork                     |
+| Thera         | Business state precedes action        | Rooms and a human confirmation prompt                   | DOM / CSS           | Product link                 | Example data labeled                                       |
+| Studio        | Intelligent image production          | Film framing and procedural contour composition         | CSS / DOM           | Studio page                  | Thirteen contours, no showreel, no case claim              |
+| Science       | Discovery starts with knowledge       | Citation-like relations on paper                        | SVG / DOM           | Read                         | Nine paths; explicitly not experimental results            |
+| Company       | Human possibility is the purpose      | Quiet editorial typography                              | DOM                 | Company page                 | No invented milestones or team                             |
+| Closing       | Return to the institution             | Wordmark and official slogan in void                    | DOM                 | Contact/footer links         | No asset                                                   |
+
+Passage now uses the supplied official geometry to derive its axis and progressively enhances a static diagonal composition with one bounded WebGL2 scene. Studio retains its separate optional Canvas2D composition; the two pause outside their viewports. No Three.js, WebGPU or GSAP dependency is required. Product detail demos use DOM and SVG with different interaction mechanisms. See DELIVERY.md and PASSAGE.md for phase coverage, source provenance and geometry measurement.

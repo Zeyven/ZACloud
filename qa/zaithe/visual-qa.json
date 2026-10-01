@@ -1,0 +1,188 @@
+{
+  "browser": "151.0.7922.173",
+  "widths": [
+    {
+      "width": 2560,
+      "scrollWidth": 2560,
+      "viewportWidth": 2560,
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "viewportWidth": 1920,
+      "overflow": false
+    },
+    {
+      "width": 1728,
+      "scrollWidth": 1728,
+      "viewportWidth": 1728,
+      "overflow": false
+    },
+    {
+      "width": 1512,
+      "scrollWidth": 1512,
+      "viewportWidth": 1512,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "viewportWidth": 1280,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "viewportWidth": 1024,
+      "overflow": false
+    },
+    {
+      "width": 834,
+      "scrollWidth": 834,
+      "viewportWidth": 834,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "viewportWidth": 768,
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "viewportWidth": 430,
+      "overflow": false
+    },
+    {
+      "width": 393,
+      "scrollWidth": 393,
+      "viewportWidth": 393,
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "scrollWidth": 375,
+      "viewportWidth": 375,
+      "overflow": false
+    }
+  ],
+  "pageErrors": [],
+  "resources": [
+    {
+      "name": "/_next/static/media/inter_latin_variable-s.p.0gsaq8ukbf34m.woff2",
+      "bytes": 0,
+      "encodedBytes": 48256,
+      "decodedBytes": 48256,
+      "type": "link"
+    },
+    {
+      "name": "/brand/zaithe-nav-white.svg",
+      "bytes": 300,
+      "encodedBytes": 0,
+      "decodedBytes": 0,
+      "type": "link"
+    },
+    {
+      "name": "/_next/static/chunks/0vlv1-wf3rmza.css",
+      "bytes": 0,
+      "encodedBytes": 7296,
+      "decodedBytes": 28622,
+      "type": "link"
+    },
+    {
+      "name": "/_next/static/chunks/1w1ie_pb39yte.css",
+      "bytes": 0,
+      "encodedBytes": 888,
+      "decodedBytes": 888,
+      "type": "link"
+    },
+    {
+      "name": "/_next/static/chunks/0b0mjb2eub5m6.js",
+      "bytes": 0,
+      "encodedBytes": 1970,
+      "decodedBytes": 5364,
+      "type": "link"
+    },
+    {
+      "name": "/_next/static/chunks/3aa6i9vp4qu50.js",
+      "bytes": 0,
+      "encodedBytes": 7727,
+      "decodedBytes": 29044,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/049j3e59jzief.js",
+      "bytes": 0,
+      "encodedBytes": 71633,
+      "decodedBytes": 229141,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/03pqgx3i3likc.js",
+      "bytes": 0,
+      "encodedBytes": 45165,
+      "decodedBytes": 165945,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/turbopack-174z-x9fhcfq5.js",
+      "bytes": 0,
+      "encodedBytes": 3851,
+      "decodedBytes": 9721,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/2h430_5kz5jng.js",
+      "bytes": 0,
+      "encodedBytes": 3657,
+      "decodedBytes": 14377,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/3jbgprv1ty3ww.js",
+      "bytes": 0,
+      "encodedBytes": 3611,
+      "decodedBytes": 8868,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/chunks/38a-iv_kk-a6h.js",
+      "bytes": 0,
+      "encodedBytes": 9193,
+      "decodedBytes": 24941,
+      "type": "script"
+    },
+    {
+      "name": "/_next/static/media/noto_sans_sc_subset-s.0ppc87qh65d_b.woff2",
+      "bytes": 0,
+      "encodedBytes": 125052,
+      "decodedBytes": 125052,
+      "type": "css"
+    },
+    {
+      "name": "/brand/zaithe-app-obsidian.svg",
+      "bytes": 300,
+      "encodedBytes": 745,
+      "decodedBytes": 745,
+      "type": "other"
+    }
+  ],
+  "slowNetworkCpu4x": {
+    "title": "Intelligence for what’s possible. — ZAITHE / 智行通心",
+    "overflow": false,
+    "media": 4
+  },
+  "notes": [
+    "Task cloud Chromium, not native Safari or iOS.",
+    "720 CSS-pixel reflow used for 1440px at 200% equivalent; not a native browser zoom certification.",
+    "No production RUM or INP percentile claim."
+  ]
+}
