@@ -1,4 +1,10 @@
-import { copy, localPath, products, type Locale } from "@/lib/site";
+import {
+  contactEmail,
+  copy,
+  localPath,
+  products,
+  type Locale,
+} from "@/lib/site";
 import { Label } from "./Shell";
 import { Walkthrough } from "./Walkthrough";
 import { Composition } from "./Visuals";
@@ -241,6 +247,11 @@ export function InnerPage({
       <section className="shell page-hero contact-page">
         <Label>CONTACT</Label>
         <h1>{copy(locale, "Let’s begin.", "从对话开始。")}</h1>
+        <p>
+          <a className="text-link" href={`mailto:${contactEmail}`}>
+            {contactEmail} ↗
+          </a>
+        </p>
         <Contact locale={locale} />
       </section>
     );

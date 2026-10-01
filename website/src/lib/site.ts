@@ -1,4 +1,5 @@
 import { passage } from "./passage";
+export const contactEmail = "zaithe@zaithe.com";
 export type Locale = "en" | "zh-cn";
 export const siteFeatures = {
   products: true,

@@ -94,7 +94,7 @@ Firefox/WebKit官方浏览器下载被HTTP403 `Domain forbidden`阻止，未绕�
 ## Missing Assets / Remaining Risks
 
 1. 官方SVG现已接入；原文件下载故障仍存在，交付记录如实注明使用完整原始文本恢复。
-2. 法务公司名与联系收件渠道：待确认，未编造。
+2. 公开联系邮箱已由用户确认：zaithe@zaithe.com。已添加中英文联系页邮件链接；网页表单的服务端投递仍未配置，不会自动发邮件。法务公司名仍待确认，未编造。
 3. 原生Apple设备、Edge、Firefox/WebKit验收未完成。
 4. 历史网站源码ZIP未读取，不能声称迁移等价。
 5. ESLint9为React插件兼容锁定，registry标为deprecated；应在兼容链更新后升级。
