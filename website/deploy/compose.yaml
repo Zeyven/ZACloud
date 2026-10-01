@@ -8,8 +8,8 @@ services:
     restart: unless-stopped
     environment:
       SITE_ORIGIN: https://${SITE_HOST:?Set SITE_HOST}
-    expose:
-      - "3000"
+    ports:
+      - "127.0.0.1:${SITE_PORT:-3090}:3000"
     read_only: true
     tmpfs:
       - /tmp
@@ -23,6 +23,7 @@ services:
         max-size: "5m"
         max-file: "2"
   gateway:
+    profiles: [fresh-server-only]
     image: caddy:2-alpine
     restart: unless-stopped
     ports:

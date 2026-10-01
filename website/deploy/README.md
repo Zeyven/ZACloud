@@ -18,11 +18,11 @@
 ```sh
 docker compose --env-file .env config --quiet
 docker compose --env-file .env build web
-docker compose --env-file .env up -d
+docker compose --env-file .env up -d web
 docker compose --env-file .env ps
 ```
 
-Caddy 自动获取/续期 HTTPS 证书；仅在 DNS 正确、80/443 可用时启动。首次构建需下载 Node 与依赖，2 vCPU / 4GB 无 swap 的服务器先查看可用内存；不要为了本网站杀掉其他进程。可改为在构建机器生成镜像、通过授权渠道传入服务器，减少生产服务器构建压力。
+用户提供的端口输出证实现有Nginx占用80/443，且有多个既存Next应用。默认只启动web于127.0.0.1:3090，不启动Caddy。审计现有zaithe.com的Nginx站点配置与证书后，使用nginx-location.conf中的示例接入该站点；先备份，执行nginx -t通过后reload，保留旧上游以便回退。不可盲目替换整个Nginx配置。Caddy仅为全新空服务器的可选入口，显式fresh-server-only profile才会启动；现有机器不得启用该profile。首次构建需下载 Node 与依赖，2 vCPU / 4GB 无 swap 的服务器先查看可用内存；不要为了本网站杀掉其他进程。可改为在构建机器生成镜像、通过授权渠道传入服务器，减少生产服务器构建压力。
 
 联系表单只创建访客自己的邮件草稿，不向服务器提交内容、不代发邮件、不自动回复。无需 SMTP 密码。现存 POST API 保持拒绝投递状态，作为旧端点的保护。
 

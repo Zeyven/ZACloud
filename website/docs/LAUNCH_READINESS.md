@@ -5,7 +5,7 @@
 - User-confirmed operator: 智行通心（湖北）科技有限公司; public email: zaithe@zaithe.com.
 - User selected visitor-owned mail drafts. Contact fields are percent-encoded into a fixed-recipient mailto URI; the UI states that a draft is not a sent message. No SMTP sender, automated response or website form upload is required. The guarded old POST API remains fail-closed.
 - Bilingual privacy and terms now explain actual form behavior, selected infrastructure/mail providers, purpose, purpose-based retention, choices, rights requests, demonstration limits and IP/license boundaries. These texts do not certify unknown server logging or mailbox administration. Source reference: https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm (personal-information disclosure and necessary retention principles).
-- Standalone Next runtime, Dockerfile, non-root app, private app port, read-only filesystem, bounded Docker logs, Caddy HTTPS configuration, `/api/health`, and configurable build-time canonical origin.
+- Standalone Next runtime, Dockerfile, non-root app, loopback-only port3090, read-only filesystem, bounded Docker logs, Caddy HTTPS configuration, `/api/health`, and configurable build-time canonical origin.
 - Deployment host supplied by user: zaithe.com. The user also identified www.zaithe.com; redirect configuration awaits DNS/entry-point inspection. Domain/DNS changes have not been made.
 
 ## Verified locally
@@ -20,6 +20,7 @@
 ## Blocked / unverified
 
 - SSH connection to the provided server on port22 returned Connection refused, including an explicit network-permitted read-only retry. No server configuration, existing sites, runtime logs, network ports or resources were inspected or changed. The actual SSH port, service availability and firewall route must be resolved.
+- The user provided server-side evidence that ssh.service is active and port22 is listening; a new task-side retry was still refused. Existing Nginx owns80/443 and several Next/DB services exist. Default Compose startup therefore only starts the app on an independent loopback port; no existing entrypoint may be replaced without inspecting its site configuration.
 - DNS lookups from this task environment failed for the website and mailbox host. This is not proof the public DNS is wrong. Verify authoritative DNS from an independent resolver before deployment.
 - ICP filing status is not provided. No filing number is fabricated or displayed.
 - No HTTPS certificate, public deployment, mail-client send or inbox receipt is certified.
@@ -38,3 +39,7 @@ Record device model, OS/browser version, date, final origin and screenshot/resul
 6. Inspect console/network for hydration errors and missing fonts/assets. Check HTTPS and final canonical/hreflang.
 
 Any observed failure needs an issue and correction before calling native acceptance complete. Infrastructure and native-device results can be appended without inventing evidence.
+
+## Container build correction
+
+The first remote container job failed because Docker's dependency-install layer copied package.json and lockfile but omitted the existing pnpm-workspace.yaml policy. The Dockerfile now copies that policy before installation. It preserves the repository's already pinned package exceptions and build allowlist; no package-age policy was disabled or expanded. Final result is the latest matching workflow.
