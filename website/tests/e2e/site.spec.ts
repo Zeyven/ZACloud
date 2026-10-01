@@ -73,7 +73,9 @@ test("walkthrough, keyboard, menu and browser back", async ({ page }) => {
 test("no media, reduced motion and 200 percent layout", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/zh-cn");
-  await expect(page.locator("video, img:not(.brand-logo), canvas")).toHaveCount(0);
+  await expect(page.locator("video, img:not(.brand-logo), canvas")).toHaveCount(
+    0,
+  );
   await page.setViewportSize({ width: 720, height: 500 });
   expect(
     await page.evaluate(
@@ -115,6 +117,8 @@ test("WCAG automated checks on homepage and contact", async ({ page }) => {
     "/",
     "/zh-cn",
     "/contact",
+    "/privacy",
+    "/terms",
     "/products/za-nexus",
     "/products/za-space",
     "/products/za-thera",
@@ -127,7 +131,26 @@ test("WCAG automated checks on homepage and contact", async ({ page }) => {
     expect(results.violations).toEqual([]);
   }
 });
-test("contact is honest and never submits user data", async ({ page }) => {
+test("contact creates an explicit email draft without submitting user data", async ({
+  page,
+}) => {
+  const posts: string[] = [];
+  page.on("request", (request) => {
+    if (request.method() === "POST") posts.push(request.url());
+  });
+  await page.addInitScript(() => {
+    document.addEventListener(
+      "click",
+      (event) => {
+        const link = (event.target as HTMLElement).closest("a");
+        if (link?.href.startsWith("mailto:")) {
+          event.preventDefault();
+          (window as Window & { draft?: string }).draft = link.href;
+        }
+      },
+      true,
+    );
+  });
   await page.goto("/contact");
   await page.getByLabel("Name", { exact: true }).fill("Test");
   await page.getByLabel("Email", { exact: true }).fill("test@example.test");
@@ -135,8 +158,14 @@ test("contact is honest and never submits user data", async ({ page }) => {
     .getByLabel("Message", { exact: true })
     .fill("A local test message.");
   await page.locator("input[type=checkbox]").check();
-  await page.getByRole("button", { name: "Check message" }).click();
+  await page.getByRole("button", { name: "Create email" }).click();
   await expect(page.getByRole("status")).toContainText("has not been sent");
+  const draft = new URL(
+    await page.evaluate(() => (window as Window & { draft?: string }).draft || ""),
+  );
+  expect(draft.pathname).toBe("zaithe@zaithe.com");
+  expect(draft.searchParams.get("body")).toContain("A local test message.");
+  expect(posts).toEqual([]);
 });
 test("every route fits mobile and protected contact endpoint fails closed", async ({
   page,

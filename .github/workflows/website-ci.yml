@@ -25,8 +25,10 @@ jobs:
           cache-dependency-path: website/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
       - run: pnpm media-policy && pnpm lint && pnpm typecheck && pnpm test && pnpm build
-      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit msedge
       - run: pnpm test:e2e
+        env:
+          ZAI_EDGE_EXECUTABLE_PATH: /opt/microsoft/msedge/msedge
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -34,3 +36,32 @@ jobs:
           path: |
             website/artifacts
             website/playwright-report
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --build-arg SITE_ORIGIN=https://zaithe.com -t zaithe-website:ci website
+      - name: Verify container runtime and configured origin
+        run: |
+          docker run -d --name zaithe-ci --read-only --tmpfs /tmp --tmpfs /app/.next/cache:uid=1000,gid=1000 --cap-drop ALL --security-opt no-new-privileges:true -e SITE_ORIGIN=https://zaithe.com -p 127.0.0.1:3007:3000 zaithe-website:ci
+          python3 - <<'PY'
+          import time,urllib.request,json
+          for attempt in range(30):
+            try:
+              with urllib.request.urlopen('http://127.0.0.1:3007/api/health',timeout=2) as r:
+                assert json.load(r)['status']=='ok'
+              break
+            except (OSError,AssertionError):
+              if attempt==29: raise
+              time.sleep(1)
+          with urllib.request.urlopen('http://127.0.0.1:3007/contact') as r:
+            text=r.read().decode()
+            assert 'mailto:zaithe@zaithe.com' in text
+            assert 'https://zaithe.com/contact' in text
+          with urllib.request.urlopen('http://127.0.0.1:3007/zh-cn/privacy') as r:
+            assert '智行通心（湖北）科技有限公司' in r.read().decode()
+          print('PASS: non-root container health, contact, origin and policy')
+          PY
+      - name: Container diagnostics
+        if: always()
+        run: docker logs zaithe-ci || true

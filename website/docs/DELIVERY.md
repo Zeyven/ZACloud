@@ -109,3 +109,9 @@ Firefox/WebKit官方浏览器下载被HTTP403 `Domain forbidden`阻止，未绕�
 ## Recommended Next
 
 本轮已补齐官方Logo、实测Passage、单一空间装置与其安全回退。剩余先处理联系/法务事实、原生浏览器验收与正式托管条件。视频仍排除；源码与QA获准发布到ZACloud独立交付分支；正式托管与部署仍需单独处理。
+
+## 用户确认后的上线准备更新
+
+用户选择阿里云ECS、腾讯企业邮箱及访客邮件应用草稿方式。联系表单现在创建固定收件人的编码邮件草稿，由访客自己发送，不要求邮箱密码、不启用网站代发。双语隐私与条款已按该行为与确认主体编写。
+
+Docker/Compose/Caddy部署配置、独立健康检查与可配置canonical origin已准备；这些不是已上线证明。实际Edge Linux与Chromium34项本地测试通过。原生Safari/iOS、服务器SSH可达、DNS/备案状态、HTTPS上线及真实用户性能仍待验收。详见LAUNCH_READINESS.md，最终CI结果以当前提交对应运行记录为准。

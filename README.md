@@ -4,6 +4,7 @@ Website source delivery on an independent branch. No production deployment is co
 
 - [Application and local commands](website/README.md)
 - [Delivery report](website/docs/DELIVERY.md)
+- [Launch readiness and outstanding checks](website/docs/LAUNCH_READINESS.md)
 - [Passage geometry and asset provenance](website/docs/PASSAGE.md)
 - [Desktop and mobile review evidence](qa/zaithe/README.md)
 

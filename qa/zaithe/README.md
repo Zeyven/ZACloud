@@ -12,3 +12,10 @@ These screenshots and JSON observations were produced with the task’s cloud Ch
 Engineering validation and visual review are separate. Native Safari/iOS, production RUM, and a verified contact delivery backend remain outstanding. Video is intentionally excluded.
 
 Reproduce from `website/` using `pnpm exec tsx scripts/visual-qa.ts` and `pnpm exec tsx scripts/spatial-qa.ts`, with the local production server running. Generated artifacts remain ignored under `website/artifacts/`.
+
+## Contact and privacy update
+
+- [Contact, mobile](contact-mobile.png)
+- [Privacy, mobile](privacy-mobile.png)
+
+These were inspected separately after the email-app draft implementation. Chromium and actual Edge Linux local tests passed; native Safari/iOS remain unverified. See website/docs/LAUNCH_READINESS.md.

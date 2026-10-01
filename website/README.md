@@ -11,7 +11,7 @@ pnpm build
 pnpm start
 ```
 
-Open `http://localhost:3000` or `http://localhost:3000/zh-cn` **inside the task environment**. No public deployment was created. `pnpm dev` is available for development.
+Open `http://localhost:3000` or `http://localhost:3000/zh-cn` **inside the task environment**. Deployment configuration is ready under deploy/; no public deployment has succeeded. `pnpm dev` is available for development.
 
 ## Verify
 
@@ -33,16 +33,16 @@ The task environment uses `/usr/bin/chromium`. CI uses downloaded Playwright bro
 
 - Next.js App Router, React, strict TypeScript, pnpm lockfile.
 - Statically generated bilingual pages, server-rendered brand content.
-- Client boundaries for the four deterministic product demos, optional Studio and Passage renderer controls, motion preference, and local contact editor.
+- Client boundaries for the four deterministic product demos, optional Studio and Passage renderer controls, motion preference, and local email draft editor.
 - Native scrolling and HTML details mobile navigation; both remain usable without JavaScript.
 - Self-hosted Inter Latin variable font and Noto Sans CJK SC subset, with licenses.
 - `src/lib/site.ts` controls routes, feature flags, locale links, status verification and brand assets.
-- `src/lib/metadata.ts` provides canonical URLs and language alternates. Organization schema has no invented offices, legal entity or employees.
-- A fail-closed contact API validates requests, limits request size and frequency, checks origin and honeypot, and returns 503 until a verified delivery destination is configured. It does not send email or persist personal data. The UI only checks a local draft and clearly says it is not sent.
+- `src/lib/metadata.ts` provides canonical URLs and language alternates. Organization schema includes the user-confirmed legal operator and email, with no invented offices or employees.
+- A fail-closed contact API validates requests, limits request size and frequency, checks origin and honeypot, and returns 503 until a verified delivery destination is configured. It does not send email or persist personal data. The UI creates a mailto draft in the visitor’s email app; the visitor must send it there. Form fields are not posted to the website.
 
 ## Boundaries
 
-This is a local, reviewable website implementation, not a production deployment. The supplied official SVGs are integrated unchanged as approved runtime copies. Their original downloads failed; complete source text was recovered and rendered, with original identity retained. The measured Passage axis is 39.821659983867036°, fitted from four slightly differing edges. See [geometry and source provenance](docs/PASSAGE.md).
+This is a verified website implementation with a Docker/HTTPS deployment configuration. SSH access is currently blocked, so it is not a confirmed production deployment. The supplied official SVGs are integrated unchanged as approved runtime copies. Their original downloads failed; complete source text was recovered and rendered, with original identity retained. The measured Passage axis is 39.821659983867036°, fitted from four slightly differing edges. See [geometry and source provenance](docs/PASSAGE.md).
 
 Video is intentionally absent following the latest user instruction. No empty player, skip button or visible asset-required notice is shown. The private content model retains `TVC_ASSET_REQUIRED` for future work.
 
@@ -60,3 +60,11 @@ Product status is `verification: pending, status: null`, not a guessed lifecycle
 - `pnpm exec tsx scripts/runtime-qa.ts` records lazy loading, local Canvas draw timing, and interactive screenshots. It does not certify production CWV.
 
 See [delivery report](docs/DELIVERY.md), [audit](docs/AUDIT.md), and [scene decisions](docs/SCENES.md).
+
+## Current delivery and policy
+
+The user chose email-app drafts instead of server SMTP. No email passwords, personal information or uploaded SSH keys belong in Git. Privacy and terms now describe this implementation, the confirmed legal operator and selected Alibaba Cloud / Tencent Enterprise Email services. They do not certify the infrastructure or provider settings that have not yet been inspected.
+
+`SITE_ORIGIN` is an HTTPS origin set at build time (defaults to https://zaithe.com). The user-supplied deployment host is zaithe.com. Rebuild if the canonical origin changes. See [deployment instructions](deploy/README.md) and [remaining acceptance](docs/LAUNCH_READINESS.md).
+
+The test runner always starts a fresh local server to avoid accidentally testing a stale build. Use `ZAI_TEST_PORT=3005` if port3000 is already occupied. `ZAI_EDGE_EXECUTABLE_PATH` enables an actual Microsoft Edge project.

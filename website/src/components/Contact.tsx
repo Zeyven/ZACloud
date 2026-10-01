@@ -1,7 +1,8 @@
 "use client";
 import { useState, useSyncExternalStore } from "react";
 const subscribe = () => () => {};
-import { copy, type Locale } from "@/lib/site";
+import { contactEmail, copy, localPath, type Locale } from "@/lib/site";
+import { contactMailto } from "@/lib/contact-mailto";
 export function Contact({ locale }: { locale: Locale }) {
   const [notice, setNotice] = useState("");
   const hydrated = useSyncExternalStore(
@@ -14,11 +15,24 @@ export function Contact({ locale }: { locale: Locale }) {
       className="contact-form"
       onSubmit={(e) => {
         e.preventDefault();
+        const fields = new FormData(e.currentTarget);
+        const value = (key: string) => String(fields.get(key) || "").trim();
+        const link = document.createElement("a");
+        link.href = contactMailto({
+          name: value("name"),
+          email: value("email"),
+          company: value("company"),
+          topic: value("topic"),
+          message: value("message"),
+        });
+        document.body.append(link);
+        link.click();
+        link.remove();
         setNotice(
           copy(
             locale,
-            "Your message has not been sent. The contact channel is awaiting verification. No form data leaves this page.",
-            "消息未发送。联系渠道尚待核实，表单内容不会离开此页面。",
+            "Your message has not been sent. Send the draft in your email app. If it did not open, email zaithe@zaithe.com directly.",
+            "消息尚未发送。请在邮件应用中确认并发送；若未打开邮件应用，请直接联系 zaithe@zaithe.com。",
           ),
         );
       }}
@@ -26,8 +40,8 @@ export function Contact({ locale }: { locale: Locale }) {
       <p className="form-notice">
         {copy(
           locale,
-          "Contact delivery is not yet connected. This form lets you prepare a message locally; nothing is transmitted or stored.",
-          "联系渠道尚未接通。你可以在此准备消息，内容不会发送或保存。",
+          "Create an email draft, then send it in your email app. Form contents are not uploaded to this website.",
+          "填写后创建邮件草稿，再在你的邮件应用中发送。表单内容不会上传至本网站。",
         )}
       </p>
       <fieldset disabled={!hydrated}>
@@ -69,20 +83,26 @@ export function Contact({ locale }: { locale: Locale }) {
           <input type="checkbox" required />
           {copy(
             locale,
-            "I understand this message stays in my browser and will not be sent.",
-            "我了解此消息仅保留在当前页面，不会发送。",
+            "I agree to place these details in an email draft for my enquiry.",
+            "我同意将这些信息填入咨询邮件草稿。",
           )}
         </label>
         <button className="solid-button" type="submit">
-          {copy(locale, "Check message", "检查消息")} ↗
+          {copy(locale, "Create email", "创建邮件")} ↗
         </button>
       </fieldset>
+      <p>
+        <a href={localPath(locale, "privacy")}>
+          {copy(locale, "Read privacy policy", "阅读隐私政策")}
+        </a>{" "}
+        · <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+      </p>
       <p role="status">{notice}</p>
       <noscript>
         {copy(
           locale,
-          "JavaScript is required for local form validation. There is no submission endpoint.",
-          "本地表单检查需要 JavaScript。当前无提交端点。",
+          "To prepare a draft without JavaScript, use the email link above.",
+          "未启用 JavaScript 时，请使用上方邮箱链接撰写邮件。",
         )}
       </noscript>
     </form>

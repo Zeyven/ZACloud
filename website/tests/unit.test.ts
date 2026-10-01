@@ -176,3 +176,20 @@ test("media guard rejects tampered approved Logo bytes", async () => {
     await rm(root, { recursive: true, force: true });
   }
 });
+
+import { contactMailto } from "../src/lib/contact-mailto";
+test("contact draft encodes user text without changing destination or query fields", () => {
+  const fields = {
+    name: "测试 & Name",
+    email: "visitor@example.test",
+    company: "",
+    topic: "General",
+    message: "Line one\n&bcc=attacker@example.test\n中文",
+  };
+  const url = new URL(contactMailto(fields));
+  assert.equal(url.protocol, "mailto:");
+  assert.equal(url.pathname, "zaithe@zaithe.com");
+  assert.equal(url.searchParams.get("subject"), "ZAITHE / General");
+  assert.equal(url.searchParams.has("bcc"), false);
+  assert(url.searchParams.get("body")?.endsWith(fields.message));
+});

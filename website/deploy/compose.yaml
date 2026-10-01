@@ -1,0 +1,48 @@
+name: zaithe-website
+services:
+  web:
+    build:
+      context: ..
+      args:
+        SITE_ORIGIN: https://${SITE_HOST:?Set SITE_HOST}
+    restart: unless-stopped
+    environment:
+      SITE_ORIGIN: https://${SITE_HOST:?Set SITE_HOST}
+    expose:
+      - "3000"
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/.next/cache:uid=1000,gid=1000
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 768m
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+  gateway:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_HOST: ${SITE_HOST:?Set SITE_HOST}
+      ACME_EMAIL: zaithe@zaithe.com
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+volumes:
+  caddy_data:
+  caddy_config:

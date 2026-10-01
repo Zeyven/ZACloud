@@ -1,6 +1,5 @@
 import {
   contactEmail,
-  legalOperator,
   copy,
   localPath,
   products,
@@ -12,6 +11,7 @@ import { Composition } from "./Visuals";
 import { NexusDemo, SpaceDemo, TheraDemo } from "./ProductDemos";
 import { StudioExperience } from "./StudioExperience";
 import { Contact } from "./Contact";
+import { Legal } from "./Legal";
 export function InnerPage({
   locale,
   route,
@@ -256,75 +256,5 @@ export function InnerPage({
         <Contact locale={locale} />
       </section>
     );
-  const privacy = route === "privacy";
-  return (
-    <section className="reading page-hero">
-      <Label>{privacy ? "PRIVACY" : "TERMS"}</Label>
-      <h1>
-        {copy(
-          locale,
-          privacy ? "Privacy." : "Terms.",
-          privacy ? "隐私。" : "条款。",
-        )}
-      </h1>
-      <p className="lead">
-        {copy(locale, "Local preview notice", "本地预览说明")}
-      </p>
-      <p>
-        {copy(
-          locale,
-          "This is a development preview of the ZAITHE website. Production policies have not yet been finalized. This notice is limited to the behavior of this build.",
-          "这是 ZAITHE 网站的开发预览。正式政策尚待完善。本说明仅描述当前构建的实际行为。",
-        )}
-      </p>
-      <p>
-        {copy(locale, "Website operator: ", "网站运营主体：")}
-        {legalOperator}
-        <br />
-        {copy(locale, "Contact: ", "联系邮箱：")}
-        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-      </p>
-      {privacy ? (
-        <>
-          <h2>{copy(locale, "Data in this preview", "此预览中的数据")}</h2>
-          <p>
-            {copy(
-              locale,
-              "No analytics, advertising scripts, tracking cookies or third-party forms are installed. Contact fields stay in the current page and are not submitted or persisted. The local server may record technical request information in its process logs.",
-              "未安装分析、广告脚本、跟踪 Cookie 或第三方表单。联系字段仅停留在当前页面，不提交、不持久化。本地服务器可能在进程日志中记录技术请求信息。",
-            )}
-          </p>
-          <h2>{copy(locale, "Before public launch", "公开上线前")}</h2>
-          <p>
-            {copy(
-              locale,
-              "The operator, contact channel, hosting logs, retention periods and any future processors must be documented before collecting personal information.",
-              "采集个人信息前，须明确运营主体、联系渠道、托管日志、保存期限及未来的数据处理方。",
-            )}
-          </p>
-        </>
-      ) : (
-        <>
-          <h2>
-            {copy(locale, "Demonstrations and availability", "演示与开放状态")}
-          </h2>
-          <p>
-            {copy(
-              locale,
-              "Interfaces and workflows marked DEMO are illustrative. They do not run live inference, establish product availability or promise specific outcomes. Scientific diagrams are not research results.",
-              "标记 DEMO 的界面与工作流为示意，不执行实时推理，不代表产品已开放，也不承诺特定结果。科学图示不是研究成果。",
-            )}
-          </p>
-          <h2>{copy(locale, "Publication pending", "发布条件待确认")}</h2>
-          <p>
-            {copy(
-              locale,
-              "Formal service terms and intellectual property notices must be finalized before public release.",
-              "正式服务条款与知识产权声明须在公开发布前完善。",
-            )}
-          </p>
-        </>
-      )}
-    </section>
-  );
+  return <Legal locale={locale} privacy={route === "privacy"} />;
 }

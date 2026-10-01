@@ -1,3 +1,4 @@
+import { siteOrigin } from "@/lib/site-origin";
 import { inter, noto } from "@/lib/fonts";
 import { notFound } from "next/navigation";
 import { routes, parsePath, legalOperator, contactEmail } from "@/lib/site";
@@ -45,8 +46,8 @@ export default async function Page({ params }: Props) {
               legalName: legalOperator,
               email: contactEmail,
               alternateName: "智行通心",
-              url: "https://zaithe.com",
-              logo: "https://zaithe.com/brand/zaithe-app-obsidian.svg",
+              url: siteOrigin,
+              logo: `${siteOrigin}/brand/zaithe-app-obsidian.svg`,
             }),
           }}
         />
