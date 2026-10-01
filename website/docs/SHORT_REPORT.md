@@ -18,6 +18,6 @@
 
 视觉：已查看更新后的桌面/手机品牌及交互截图；修复Space手机溢出和滚动透明度影响文字对比度等问题。官方Logo与实测Passage身份已补齐；空间与静态回退分别留存截图。
 
-未完成且真实阻塞：真实联系/法务信息；原生Safari/iOS/Edge和Firefox/WebKit验收；生产RUM/托管。没有部署，没有视频，没有伪造事实。
+未完成且真实阻塞：真实联系/法务信息；原生Safari/iOS/Edge设备验收；云端Firefox/WebKit矩阵以最新CI结果为准；生产RUM/托管。没有部署，没有视频，没有伪造事实。
 
-所有代码、截图、测试日志和报告保留在 `ZAITHE-website-delivery.zip`。附件上传因网络错误失败，尚无确认成功的公开下载链接。
+源码与QA截图已获用户授权发布至 https://github.com/Zeyven/ZACloud/tree/zaithe/website-v5 。历史附件上传失败已通过GitHub源码与截图交付解决。未部署、未合并、未创建PR，main保持原样。CI及浏览器覆盖详见 qa/zaithe/VALIDATION.md 与分支最新 Website checks 运行。

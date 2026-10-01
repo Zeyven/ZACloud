@@ -48,3 +48,7 @@ Registry `npm view next version` returned 16.3.8; installed and locked Next.js 1
 Uploading the delivery ZIP and desktop/mobile screenshots failed because of a network error. No successful upload or public sharing URL was confirmed. The local delivery archive retains the source, test results and screenshots; attachment delivery remains pending. This was a technical transfer failure, not an authorization denial.
 
 The attempted attachments were `ZAITHE-website-delivery.zip`, `artifacts/home-desktop-full.png` and `artifacts/home-mobile-full.png`. Test evidence paths are relative to `website/`.
+
+## Authorized source publication — supersedes attachment blocker
+
+The user subsequently authorized source and QA publication to `Zeyven/ZACloud`, branch `zaithe/website-v5`. The branch now contains the application and review evidence. Original target LICENSE/.gitignore and main are preserved. No deployment, PR, merge or force push was performed. Historical attachment failures above describe the earlier transfer attempt; GitHub delivery is now confirmed.
